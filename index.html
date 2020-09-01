@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penelope Civil</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <h1>Penelope Civil</h1>
+        <div class="menu">
+            <div>About</div>
+            <div>Contact</div>
+        </div>
+    </nav>
+
+    <section id="paintings">
+        <div class="modal"></div>
+        <div class="painting">
+            <img src="assets/1.jpg" alt="">
+            <p>San Giorgio Maggiore At Dusk</p>
+        </div>
+        <div class="painting">
+            <img src="assets/2.jpg" alt="">
+            <p>Irises in Monets Garden</p>
+        </div>
+        <div class="painting">
+            <img src="assets/3.jpg" alt="">
+            <p>Pathway in Monets Garden at Giverny</p>
+        </div>
+        <div class="painting">
+            <img src="assets/4.jpg" alt="">
+            <p>Argenteuil (Red Boats)</p>
+        </div>
+        <div class="painting">
+            <img src="assets/5.jpg" alt="">
+            <p>The Walk Woman With a Parasol</p>
+        </div>
+        <div class="painting">
+            <img src="assets/6.jpg" alt="">
+            <p>Impression Sunrise</p>
+        </div>
+        <div class="painting">
+            <img src="assets/7.jpg" alt="">
+            <p>The Water Lily Pond Aka Japanese Bridge</p>
+        </div>
+        <div class="painting">
+            <img src="assets/8.jpg" alt="">
+            <p>The Garden At Argenteuil Aka The Dahlias</p>
+        </div>
+        <div class="painting">
+            <img src="assets/9.jpg" alt="">
+            <p>Boulevard Des Capucines</p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('click', function(){
+            var el = event.target;
+            var elParent = el.parentElement;
+            var modal = document.querySelector('.modal');
+
+            if(elParent.classList.contains('painting')){
+                console.log('booya');
+                modal.style.display = "flex";
+
+                var modalBox = document.createElement("img");
+                modalBox.src = el.src;
+
+                var text = document.createTextNode(elParent.lastElementChild.innerHTML)
+
+                modal.appendChild(modalBox);
+                modal.appendChild(text);
+
+            }
+
+            console.log(el)
+
+            if(el.classList.contains('modal')){
+                console.log('contains modal')
+                modal.style.display = "none";
+
+                while(modal.firstChild)
+                    modal.removeChild(modal.firstChild)
+            }
+
+
+        })
+    </script>
+</body>
+</html>
