@@ -8,10 +8,10 @@
 </head>
 <body>
     <nav>
-        <h1>Penelope Civil</h1>
+        <h1 id='home'>Penelope Civil</h1>
         <div class="menu">
-            <div>About</div>
-            <div>Contact</div>
+            <div id='about'>About</div>
+            <div id='contact'>Contact</div>
         </div>
     </nav>
 
@@ -55,14 +55,30 @@
         </div>
     </section>
 
+    <section id="about-section">
+        <img src="assets/riz.jpg" alt="">
+        <p>Penelope is an Auckland based Artist</p>
+    </section>
+
+    <section id="contact-section">
+        <!-- <h1>Contact me</h1> -->
+
+        <h2>021 55 22 26</h2>
+        <h2>pentim@gmail.com</h2>
+    </section>
+
     <script>
+
+        var selectedMenu = [true, false, false];
+
+
         document.addEventListener('click', function(){
             var el = event.target;
             var elParent = el.parentElement;
             var modal = document.querySelector('.modal');
 
             if(elParent.classList.contains('painting')){
-                console.log('booya');
+                // console.log('booya');
                 modal.style.display = "flex";
 
                 var modalBox = document.createElement("img");
@@ -75,17 +91,42 @@
 
             }
 
-            console.log(el)
+            // console.log(el)
 
             if(el.classList.contains('modal')){
-                console.log('contains modal')
+                // console.log('contains modal')
                 modal.style.display = "none";
 
                 while(modal.firstChild)
                     modal.removeChild(modal.firstChild)
             }
 
+            var paintings = document.getElementById('paintings');
+            var aboutSection = document.getElementById('about-section');
+            var contactSection = document.getElementById('contact-section');
 
+            console.log(el.id)
+
+            if(el.id==='about'){
+                console.log('about')
+                paintings.style.display = "none";
+                aboutSection.style.display = "block";
+                contactSection.style.display = "none";
+            }
+
+            if(el.id==='contact'){
+                console.log('contact')
+                paintings.style.display = "none";
+                aboutSection.style.display = "none";
+                contactSection.style.display = "flex";
+            }
+
+            if(el.id==='home'){
+                console.log('home')
+                paintings.style.display = "grid";
+                aboutSection.style.display = "none";
+                contactSection.style.display = "none";
+            }
         })
     </script>
 </body>
